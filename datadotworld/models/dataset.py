@@ -24,7 +24,6 @@ import io
 from collections import OrderedDict
 
 import datapackage
-from datapackage.resource import TabularResource
 from jsontableschema.exceptions import SchemaValidationError
 from os import path
 from tabulator import Stream
@@ -68,13 +67,12 @@ class LocalDataset(object):
         self.__descriptor_file = descriptor_file
         self.__base_path = os.path.dirname(
             os.path.abspath(self.__descriptor_file))
-
         # Index resources by name
         self.__resources = {r.descriptor['name']: r
                             for r in self._datapackage.resources}
         self.__tabular_resources = {k: sanitize_resource_schema(r)
                                     for (k, r) in self.__resources.items()
-                                    if type(r) is TabularResource and
+                                    if r.tabular and
                                     r.descriptor['path'].startswith('data')}
         self.__invalid_schemas = []  # Resource names with invalid schemas
 
