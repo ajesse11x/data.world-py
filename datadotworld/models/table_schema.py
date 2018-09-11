@@ -230,7 +230,7 @@ def _sanitize_schema(schema_descriptor):
     """
     missing_type_support = False
     try:
-        from jsontableschema import YearType, YearMonthType, DurationType  # noqa
+        from tableschema import YearType, YearMonthType, DurationType  # noqa
     except ImportError:
         missing_type_support = True
 

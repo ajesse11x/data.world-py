@@ -24,7 +24,7 @@ import io
 from collections import OrderedDict
 
 import datapackage
-from jsontableschema.exceptions import SchemaValidationError
+from tableschema.exceptions import SchemaValidationError
 from os import path
 from tabulator import Stream
 
